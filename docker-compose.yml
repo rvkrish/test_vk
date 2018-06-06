@@ -1,0 +1,18 @@
+version: '2'
+volumes:
+  db-data:
+    external: false
+services:
+  db:
+    image: postgres:9.6
+  web:
+    build: .
+    command: Xvfb :99 -screen 0 1280x1024x24
+    command: bundle exec rails s -p 3001 -b '0.0.0.0'
+
+    volumes:
+      - .:/myapp
+    ports:
+      - "3001:3001"
+    depends_on:
+      - db

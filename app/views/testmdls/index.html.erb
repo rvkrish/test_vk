@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Testmdls</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Tst</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @testmdls.each do |testmdl| %>
+      <tr>
+        <td><%= testmdl.tst %></td>
+        <td><%= link_to 'Show', testmdl %></td>
+        <td><%= link_to 'Edit', edit_testmdl_path(testmdl) %></td>
+        <td><%= link_to 'Destroy', testmdl, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Testmdl', new_testmdl_path %>

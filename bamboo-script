@@ -1,0 +1,17 @@
+curl -L https://github.com/docker/compose/releases/download/1.17.1/docker-compose-`uname -s`-`uname -m` -o docker-compose
+chmod +x docker-compose
+
+
+./docker-compose kill
+./docker-compose rm force
+./docker-compose build
+./docker-compose run -d db
+docker ps
+./docker-compose run web rake db:create
+./docker-compose run web rake db:migrate
+./docker-compose up -d
+
+./docker-compose run web rspec
+
+./docker-compose kill
+./docker-compose rm -f
